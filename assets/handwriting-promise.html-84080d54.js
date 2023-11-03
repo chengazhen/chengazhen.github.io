@@ -1,4 +1,4 @@
-import{_ as n,o as s,c as a,a as t}from"./app-2879b2ac.js";const p={},e=t(`<h1 id="实现一个简单的-promise-抽时间写一个符合-promise-a-规范的" tabindex="-1"><a class="header-anchor" href="#实现一个简单的-promise-抽时间写一个符合-promise-a-规范的" aria-hidden="true">#</a> 实现一个简单的 Promise (抽时间写一个符合 promise A+规范的)</h1><div class="language-javascript line-numbers-mode" data-ext="js"><pre class="language-javascript"><code><span class="token comment">// 首先思考 Promise 里面的内置属性</span>
+import{_ as n,o as s,c as a,a as t}from"./app-097fe1e7.js";const p={},e=t(`<h1 id="实现一个简单的-promise-抽时间写一个符合-promise-a-规范的" tabindex="-1"><a class="header-anchor" href="#实现一个简单的-promise-抽时间写一个符合-promise-a-规范的" aria-hidden="true">#</a> 实现一个简单的 Promise (抽时间写一个符合 promise A+规范的)</h1><div class="language-javascript line-numbers-mode" data-ext="js"><pre class="language-javascript"><code><span class="token comment">// 首先思考 Promise 里面的内置属性</span>
 
 <span class="token comment">// 状态</span>
 <span class="token comment">// 正确的状态 需要一个 最终值</span>
