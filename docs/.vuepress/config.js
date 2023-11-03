@@ -22,7 +22,7 @@ export default defineUserConfig({
       },
       {
         text: '技术',
-        link: '/teach/handwriting-promise',
+        link: '/teach/base/handwriting-promise.md',
         activeMatch: '^/teach/'
       }, {
         text: '英语',
