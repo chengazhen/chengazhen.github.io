@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-41f6692a","path":"/teach/rollup-alias.html","title":"","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1698991821000,"contributors":[{"name":"chengchongzhen","email":"chengchongzhen@hexfuture.net","commits":1}]},"filePathRelative":"teach/rollup-alias.md"}');export{e as data};
