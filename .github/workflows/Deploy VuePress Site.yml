@@ -22,12 +22,12 @@ jobs:
         run: npm install # or yarn install
 
       - name: Build
-        run: npm run build # or yarn build
+        run: npm run docs:build # or yarn build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
-          external_repository: <username>/<username>.github.io # Replace with the repository where you want to deploy
+          external_repository: <Journey98>/<Journey98>.github.io # Replace with the repository where you want to deploy
           branch: gh-pages
           publish_dir: .vuepress/dist # Replace with your VuePress build output directory
