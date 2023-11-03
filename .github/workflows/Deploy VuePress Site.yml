@@ -28,6 +28,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.token }}
-          external_repository: Journey98/blog.git # Replace with the repository where you want to deploy
+          external_repository: Journey98/blog # Replace with the repository where you want to deploy
           branch: gh-pages
           publish_dir: .vuepress/dist # Replace with your VuePress build output directory
