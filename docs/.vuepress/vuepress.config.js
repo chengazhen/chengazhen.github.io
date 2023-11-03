@@ -5,6 +5,7 @@ import { defaultTheme } from 'vuepress'
 // const { defaultTheme } = require('vuepress')
 // const { viteBundler } = require('@vuepress/bundler-vite')
 export default {
+  base: '/blog/',
   lang: 'zh-CN',
   title: '阿臻的博客',
   description: '这是我的第一个 VuePress 站点',
