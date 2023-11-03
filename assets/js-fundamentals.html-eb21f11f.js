@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-d6d2ccdc","path":"/teach/base/js-fundamentals.html","title":"1. js 的数据类型","lang":"en-US","frontmatter":{},"headers":[],"git":{"updatedTime":1698990080000,"contributors":[{"name":"Journey","email":"52627267+Journey98@users.noreply.github.com","commits":1}]},"filePathRelative":"teach/base/js-fundamentals.md"}');export{e as data};
