@@ -2,9 +2,12 @@
 import { searchPlugin } from '@vuepress/plugin-search'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defaultTheme } from 'vuepress'
+import { defineUserConfig } from 'vuepress'
+
 // const { defaultTheme } = require('vuepress')
 // const { viteBundler } = require('@vuepress/bundler-vite')
-export default {
+export default defineUserConfig({
+  base: '/blog/',
   lang: 'zh-CN',
   title: '阿臻的博客',
   description: '这是我的第一个 VuePress 站点',
@@ -90,12 +93,4 @@ export default {
     //   link: '/English/Special-questions.md',
     // }]
   }),
-  bundler: viteBundler({
-    viteOptions: {
-      build: {
-        outDir: 'dist'
-      }
-    },
-    vuePluginOptions: {},
-  }),
-}
+})
