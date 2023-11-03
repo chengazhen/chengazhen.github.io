@@ -4,7 +4,7 @@ heroImage: '/images/logo.png'
 tagline: 在前行的时候别忘记了生活!
 actions:
   - text: 快速开始
-    link: /teach/handwriting-promise
+    link: /teach/base/handwriting-promise
     type: primary
 features:
 - title: 记录
