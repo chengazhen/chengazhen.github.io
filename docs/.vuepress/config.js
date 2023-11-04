@@ -22,11 +22,12 @@ export default defineUserConfig({
       },
       {
         text: '技术',
-        link: '/teach/base/handwriting-promise.md',
+        link: '/teach/base/rollup-alias.md',
         activeMatch: '^/teach/'
       }, {
         text: '英语',
         link: '/english/Special-questions.md',
+        activeMatch: '^/english/'
       },
       {
         text: 'github',
@@ -35,6 +36,14 @@ export default defineUserConfig({
     ],
     sidebar: {
       "/teach/": [
+        {
+          text: 'rollup别名插件匹配原理',
+          link: '/teach/utils/rollup-alias.md',
+        },
+        {
+          text: 'http报文结构',
+          link: '/teach/http/http-message.md',
+        },
         {
           text: 'js基础',
           collapsible: true,
@@ -69,14 +78,6 @@ export default defineUserConfig({
             text: 'proxy 简单依赖收集',
             link: '/teach/base/proxy-simple.md',
           }]
-        },
-        {
-          text: 'rollup别名插件匹配原理',
-          link: '/teach/rollup-alias.md',
-        },
-        {
-          text: 'http报文结构',
-          link: '/teach/http-message.md',
         },
       ],
       '/english/': [{
