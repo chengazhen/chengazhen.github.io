@@ -22,7 +22,7 @@ export default defineUserConfig({
       },
       {
         text: '技术',
-        link: '/teach/base/rollup-alias.md',
+        link: '/teach/utils/rollup-alias.md',
         activeMatch: '^/teach/'
       }, {
         text: '英语',
