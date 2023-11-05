@@ -37,9 +37,14 @@ export default defineUserConfig({
     sidebar: {
       "/teach/": [
         {
+          text: 'unocss单位px转rpx,适配uniapp',
+          link: '/teach/utils/unocss-px-rpx.md',
+        },
+        {
           text: 'rollup别名插件匹配原理',
           link: '/teach/utils/rollup-alias.md',
         },
+        
         {
           text: 'http报文结构',
           link: '/teach/http/http-message.md',
