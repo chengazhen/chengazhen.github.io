@@ -43,6 +43,128 @@ export default function pxToVwPreset() {
       enforce: 'pre',
     })`
 
+[unocss 源码地址](https://github.com/unocss/unocss/blob/bda907f15ed2ae0631dd493a3fe21f037f0ed114/packages/vite/src/index.ts#L44)
+
+```ts
+export default function UnocssPlugin<Theme extends object>(
+  configOrPath?: VitePluginConfig<Theme> | string,
+  defaults: UserConfigDefaults = {},
+): Plugin[] {
+  const ctx = createContext<VitePluginConfig>(configOrPath as any, {
+    envMode: process.env.NODE_ENV === 'development' ? 'dev' : 'build',
+    ...defaults,
+  })
+  const inlineConfig = (configOrPath && typeof configOrPath !== 'string') ? configOrPath : {}
+  const mode = inlineConfig.mode ?? 'global'
+
+  const plugins = [
+    ConfigHMRPlugin(ctx),
+    ...createTransformerPlugins(ctx),
+    ...createDevtoolsPlugin(ctx, inlineConfig),
+    {
+      name: 'unocss:api',
+      api: <UnocssVitePluginAPI>{
+        getContext: () => ctx,
+        getMode: () => mode,
+      },
+    },
+  ]
+
+  if (inlineConfig.inspector !== false)
+    plugins.push(UnocssInspector(ctx))
+
+  if (mode === 'per-module') {
+    plugins.push(...PerModuleModePlugin(ctx))
+  }
+  else if (mode === 'vue-scoped') {
+    plugins.push(VueScopedPlugin(ctx))
+  }
+  // @ts-expect-error alerts users who were already using this mode before it became its own package
+  else if (mode === 'svelte-scoped') {
+    throw new Error('[unocss] svelte-scoped mode is now its own package, please use @unocss/svelte-scoped according to the docs')
+  }
+  else if (mode === 'shadow-dom') {
+    plugins.push(ShadowDomModuleModePlugin(ctx))
+  }
+  else if (mode === 'global') {
+    plugins.push(...GlobalModePlugin(ctx))
+  }
+  else if (mode === 'dist-chunk') {
+    plugins.push(
+      ChunkModeBuildPlugin(ctx),
+      ...GlobalModeDevPlugin(ctx),
+    )
+  }
+  else {
+    throw new Error(`[unocss] unknown mode "${mode}"`)
+  }
+
+  return plugins.filter(Boolean) as Plugin[]
+}
+```
+
+可以看到 unocss 最终返回的是一个插件数组, 这就代表着 unocss 内部返回了多个适用于 vite 的插件, vite 会一个一个执行他们.
+
+```ts
+  const plugins = [
+    ConfigHMRPlugin(ctx),
+    ...createTransformerPlugins(ctx),
+    ...createDevtoolsPlugin(ctx, inlineConfig),
+    {
+      name: 'unocss:api',
+      api: <UnocssVitePluginAPI>{
+        getContext: () => ctx,
+        getMode: () => mode,
+      },
+    },
+  ]
+```
+如果你的 vite.config.ts 是这样的
+
+```ts
+import { resolve } from 'node:path'
+import { defineConfig } from 'vite'
+import uni from '@dcloudio/vite-plugin-uni'
+import AutoImport from 'unplugin-auto-import/vite'
+import UnoCSS from 'unocss/vite'
+
+// import Components from 'unplugin-vue-components/vite'
+
+import Components from '@uni-helper/vite-plugin-uni-components'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+
+  plugins: [
+    UnoCSS(),
+    AutoImport({
+      imports: ['vue', 'pinia'],
+      dts: './typing/auto-imports.d.ts',
+    }),
+    Components({
+      dirs: ['src/components/', 'src/uni_modules/hex-ui/', 'src/uni_modules/z-paging/components/'],
+      dts: './typing/components.d.ts',
+    }),
+    uni(),
+  ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+      '@components': resolve(__dirname, './src/components/'),
+    },
+  },
+})
+```
+
+那么 vite 的 plugin 的参数最终是 
+
+```ts
+plugins: [ unocss 返回的插件就是类似一个数组的 [PluginA(), { /* PluginA configuration */ }],[PluginB(), { /* PluginB configuration */ }],[PluginC(), { /* PluginC configuration */ }], Components 返回的插件 xxxx ]
+```
+
+这个时候如果你的 unocss 内部的 transformer 设置了 enforce: 'pre', 那么最终被 unocss 返回出来的就是一个强制修改执行顺序的插件, vite 执行这个插件的时候就会优先执行这个设置了 `enforce: 'pre'` 的插件
+
+
 ## 使用
 
 下面是正确的使用方式。这里会发现多了一个 `@unocss/preset-rem-to-px` 这个插件是为了兼容以下使用方式 `<div class="w-30"></div>`, 这个时候就需要将 rem 转为 px了。
