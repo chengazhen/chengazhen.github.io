@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-19c283e8","path":"/teach/base/semantic.html","title":"为什么需要语义化","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1699240828000,"contributors":[{"name":"Journey","email":"52627267+Journey98@users.noreply.github.com","commits":1}]},"filePathRelative":"teach/base/semantic.md"}');export{e as data};
