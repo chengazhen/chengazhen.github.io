@@ -185,3 +185,16 @@ export default defineConfig({
   ],
 })
 ```
+
+### 2023.12.29 更新
+这段时间忙于工作没有更新此篇博客。
+
+之前所处理的 css 单位转换还不足以让 unocss 完美的适配在 uniapp 里面, 之前的处理只处理了 css 文件代码。 在 html 的 class 类名在小程序里面也有兼容问题, 并且css 的类名修改之后要和 html 标签的类名关联起来, 所以需要 unocss 内部的 transform 处理。
+
+大概思路就是, 在 transform 里面我们可以修改 vue 文件的源码, 然后根据自己的规则来匹配类名, 然后将不兼容小程序的类名转换为一些符号或者字符串, 然后最终的代码可以运行在小程序的环境中。
+
+transform 和 preset 的关系是缺一不可的, 你可以想象一下, 如果preset 处理了 css 文件, 当 css 文件的类名修改之后, 肯定就和 html 里面的类名对应不上了, 所以 html 标签类名也是需要修改的, 这样处理后的类名才能相互关联起来, css 才能生效。
+
+思路有了, 实现起来就不难了, 虽然这次没有完美的实现适配，在这次的探索中也让我对 unocss 理解的更深了。
+
+关于此功能, 已经有作者实现了 [unocss-preset-weapp](https://github.com/MellowCo/unocss-preset-weapp)。我偶尔也会看看里面 issue，给出一些解答。
