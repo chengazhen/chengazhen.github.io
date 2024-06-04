@@ -28,6 +28,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.token }}
-          external_repository: chengazhen/blog # Replace with the repository where you want to deploy
+          external_repository: chengazhen/chengazhen.github.io # Replace with the repository where you want to deploy
           branch: gh-pages
           publish_dir: docs/.vuepress/dist # Replace with your VuePress build output directory
