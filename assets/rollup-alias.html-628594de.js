@@ -1,1 +1,0 @@
-const t=JSON.parse('{"key":"v-4f49a7cd","path":"/teach/utils/rollup-alias.html","title":"","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1717503362000,"contributors":[{"name":"Journey","email":"52627267+chengazhen@users.noreply.github.com","commits":1}]},"filePathRelative":"teach/utils/rollup-alias.md"}');export{t as data};

@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-d6d2ccdc","path":"/teach/base/js-fundamentals.html","title":"1. js 的数据类型","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1717507383000,"contributors":[{"name":"ccz","email":"15939054361@163.com","commits":1}]},"filePathRelative":"teach/base/js-fundamentals.md"}');export{t as data};
